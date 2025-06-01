@@ -1,0 +1,218 @@
+/*/////////////////////////////////////////////////////////////////////////
+                        Assignment 1 - Milestone 3
+Full Name  : Chetan Arora
+Student ID#: 100976240
+Email      : carora18@myseneca.ca
+Section    : ZRA
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+/////////////////////////////////////////////////////////////////////////*/
+Que 1:- In MS2 of this project, you were able to use the string library. Select two code snippets from your MS1 where you replace your code with one function from the string library and explain the benefits of using the string library functions over your code. (Minimum: 150 words)
+Ans:- In Milestone 2 of the project, I use the string library (<string.h>), which allows for more efficient and concise code when working with strings. 
+
+Length of String Calculation:
+
+In Milestone 1, the inputCString function calculates the length of the input string manually using a loop:
+
+int i;
+for (i = 0; string[i] != '\0'; i++);
+
+This can be replaced with the strlen function from the string library:
+
+int length = strlen(string);
+
+By using strlen,I eliminate the need for manual calculation of string length, making the code cleaner and more readable. It also ensures that the calculation is efficient and free of errors.
+
+Determining String Length:
+
+In MS1, the displayFormattedPhone function calculates the length of the phone number string manually using a loop:
+
+int size = 0;
+for (size = 0; !nonDigit && phoneNumber[size] != '\0'; size++) {
+    ...(Full code given below)
+}
+In MS2, this code is replaced by using the strlen function from the string library:
+
+length = strlen(phoneNum);
+
+The strlen function efficiently calculates the length of the phone number string without the need for a manual loop.
+
+
+Full Function Codes;-
+Ms 1
+void inputCString(char* myString, int floor, int ceiling)
+{
+	char string[50];
+	int valid = 0, i, length;
+	do {
+		scanf("%49[^\n]", string);
+		for (i = 0; string[i] != '\0'; i++);
+		if ((floor == ceiling) && (floor != i)) {
+			printf("ERROR: String length must be exactly %d chars: ", floor);
+		}
+		else if (i > ceiling) {
+			printf("ERROR: String length must be no more than %d chars: ", ceiling);
+		}
+		else if (i < floor) {
+			printf("ERROR: String length must be between %d and %d chars: ", floor, ceiling);
+		}
+		else {
+			valid = 1;
+		}
+		clearInputBuffer();
+	} while (!valid);
+	length = i;
+	for (i = 0; i <= length; i++) {
+		myString[i] = string[i];
+	}
+}
+
+MS2
+void inputCString(char* stringPtr, const int min, const int max)
+{
+    int i, end = 1;
+    while (end)
+    {
+        int length = 0;
+        char string[100];
+        scanf("%[^\n]", string);
+        clearInputBuffer();
+        length = strlen(string);
+        if (length >= min && length <= max)
+        {
+            for (i = 0; i < max; i++)
+            {
+                stringPtr[i] = string[i];
+            }
+            end = 0;
+        }
+        else
+        {
+            if (min == max)
+            {
+                printf("Invalid %d-digit number! Number: ", max);
+            }
+            else
+            {
+                if (length > max)
+                {
+                    printf("ERROR: String length must be no more than %d chars: ", max);
+                }
+                else if (length < min)
+                {
+                    printf("ERROR: String length must be between %d and %d chars: ", min, max);
+                }
+            }
+        }
+    }
+}
+
+
+MS 1
+
+void displayFormattedPhone(const char* phoneNumber) {
+	int size = 0, nonDigit = 0;
+	if (phoneNumber == NULL) {
+		printf("(___)___-____");
+	}
+	else {
+		for (size = 0; !nonDigit && phoneNumber[size] != '\0'; size++) {
+			if (phoneNumber[size] < '0' || phoneNumber[size] > '9') {
+				nonDigit = 1;
+			}
+		}
+		if (nonDigit || size != 10) {
+			printf("(___)___-____");
+		}
+		else {
+			printf("(%c%c%c)%c%c%c-%c%c%c%c",
+				phoneNumber[0], phoneNumber[1],
+				phoneNumber[2], phoneNumber[3],
+				phoneNumber[4], phoneNumber[5],
+				phoneNumber[6], phoneNumber[7],
+				phoneNumber[8], phoneNumber[9]);
+
+		}
+	}
+}
+MS2
+void displayFormattedPhone(const char* phoneNum)
+{
+    int i, length = 0, quit = 1;
+    if (phoneNum != NULL)
+    {
+        length = strlen(phoneNum);
+        for (i = 0; i < length && quit; i++)
+        {
+            if (phoneNum[i] > 57 || phoneNum[i] < 48)
+            {
+                quit = 0;
+            }
+        }
+        if (quit == 0 || length != 10)
+        {
+            printf("(___)___-____");
+        }
+        else
+        {
+            printf("(");
+            for (i = 0; i < 3; i++)
+            {
+                printf("%c", phoneNum[i]);
+            }
+            printf(")");
+            for (i = 3; i < 6; i++)
+            {
+                printf("%c", phoneNum[i]);
+            }
+            printf("-");
+            for (i = 6; i < 10; i++)
+            {
+                printf("%c", phoneNum[i]);
+            }
+        }
+    }
+    else
+    {
+        printf("(___)___-____");
+    }
+}
+
+Que 2:- At some point in your solution, you would have had to apply a string copy library function to perform string copying. There are two variations of this function – one that is much more preferrable over the other. What are these functions, what are the significant differences between the two, and provide the line of code where you should have applied this more preferred function (if you didn’t use it, modify your version to use it). Explain in the context you have used it, how it works.
+
+Ans:-In this code, I used two different functions for copying strings: `strcpy` and `strncpy`. 
+
+strcpy: This function copies a null-terminated string from the source (`src`) to the destination (`dest`). It assumes the destination buffer is large enough to hold the entire source string, including the null terminator.
+
+strncpy: This function copies a fixed number of characters (`n`) from the source (`src`) to the destination (`dest`). It is safer than `strcpy` because you can specify the maximum number of characters to copy. 
+
+### Context of Usage:
+
+In this code, The usage of string copying functions in functions such as addPatient, editPatient, and removePatient.
+patient[index].patientNumber = 0;
+strcpy(patient[index].name, "\0");
+strcpy(patient[index].phone.number, "\0");
+strcpy(patient[index].phone.description, "\0");
+
+Que 3:- In MS3, the list of appointments should always be listed in an ascending order based on the appointment’s date/time. What did you do to keep the list of appointments in the correct order regardless of any changes. Explain the logic you applied. To the best of your ability, can you identify where you think it can be improved where you were not able to figure out the code part to make it better?
+
+Ans:-
+In order to keep the list of appointments in ascending order based on the appointment's date and time, there is need of a sorting algorithm or a technique to insert new appointments in the correct position.
+
+Here's an overview of possible approaches to keep the list sorted:
+
+Sort After Adding: An alternative approach is to simply add the new appointment to the end of the list and then sort the entire list using a sorting. This method ensures that the list is always sorted, but it may be less efficient if there are frequent additions to the list, as sorting the entire list each time can be computationally expensive.
+
+Binary Search Insertion: This is a more efficient approach than linear search when inserting new appointments. Binary search can use to find the correct position to insert the new appointment in a sorted list, which allows for faster insertions.
+
+Avoiding Duplicates: When inserting new appointments, ensure that anyone don't add duplicates based on date and time.
+
+Improving Search Performance: Depending on the data structure used (e.g., array or linked list)
+
+Handling Time Zones: If the application supports multiple time zones,there is need to account for time zone conversions when sorting appointments.
+
+Sorting Criteria: Ensure that the sorting logic handles not only the date and time but also other attributes such as priority or category.
+
