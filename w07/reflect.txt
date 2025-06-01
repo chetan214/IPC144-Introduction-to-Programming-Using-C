@@ -1,0 +1,93 @@
+///////////////////////////////////////////////////////////////////////////
+                              Reflection
+                          Workshop - #7 (P2)
+Full Name  : Chetan Arora
+Student ID#: 100976240
+Email      : carora18@myseneca.ca
+Section    : ZRA
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been shared with any other student or 3rd party content provider. This submitted piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+Question 1:- If structures were not used in this workshop, this would impact how you manage the data. To help contrast the differences, first:
+a) Copy the structure definitions from your code into this file then,
+b) Copy the variable declaration section of your code into this file.
+Now, revise the code for only for the variable declaration section (b) above, to demonstrate what you would have to do to make your solution work without structures.
+
+Answer:- In this code, if structure were not used we need variable declaration section would need to be revised to handle the data without structure.
+a)
+struct playerInfo {
+    int lives;
+    char playerCharacter;
+    int treasureCount;
+    int positionHistory[MAXIMUM_PATH_LENGTH];
+};
+
+struct gameInfo {
+    int moves;
+    int pathLength;
+    int bombPlacement[MAXIMUM_PATH_LENGTH];
+    int treasurePlacement[MAXIMUM_PATH_LENGTH];
+};
+
+b)
+
+(Player variables)
+int lives;
+char playerCharacter;
+int treasureCount;
+int positionHistory[MAX_PATH_LENGTH];
+
+(Game variables)
+int moves;
+int pathLength;
+int bombPlacement[MAX_PATH_LENGTH];
+int treasurePlacement[MAX_PATH_LENGTH];
+
+
+Question 2:- Parallel arrays were used in this workshop. Identify the parallel arrays (refer to your code) and, explain the relationship between these arrays and how they contributed to your solution.
+
+Answer:- In this code, the parallel arrays are used such bombPlacement, positionHistory,treasurePlacement,currentPosition  and positionItem
+bombPlacement and treasurePlacement: These arrays represent the placement of bombs and treasures along the game path.
+positionHistory:This array keeps track of the player's movement history on the game path.
+currentPosition:This array represents the current state of the player's position on the game path during each iteration of the game loop.
+positionItem: This array is used to display the items found at each position on the game path during the game loop.
+struct playerInfo {
+    ....
+    int positionHistory[MAXIMUM_PATH_LENGTH];
+};
+
+struct gameInfo {
+   .....
+    int bombPlacement[MAXIMUM_PATH_LENGTH];
+    int treasurePlacement[MAXIMUM_PATH_LENGTH];
+};
+
+int main(void)
+{
+    .....
+    char currentPosition[MAXIMUM_PATH_LENGTH];
+    char positionItem[MAXIMUM_PATH_LENGTH];
+
+
+Question 3:- Examine your part-2 code and identify the line number where the first deepest nested statement is located. Copy this statement into this file. Provide an explanation of the complete logic required to lead for that statement to be executed.
+
+Answer- The first deepest nested statement is located at line 60
+
+     while (flag[0] == 0)
+     {
+      printf("Set the number of lives: ");
+      scanf("%d", &player.lives);
+
+      if (player.lives < MINIMUM_NUMBER_OF_LIVES || player.lives > MAXIMUM_NUMBER_OF_LIVES)
+      {
+          printf("     Must be between 1 and 10!\n");
+      }
+      else
+      {
+          flag[0] = 1;
+      }
+  };
+
+The loop is initialize the flag array to zeros. As a result, the loop check the conditions player.lives < MINIMUM_NUMBER_OF_LIVES || player.lives > MAXIMUM_NUMBER_OF_LIVES

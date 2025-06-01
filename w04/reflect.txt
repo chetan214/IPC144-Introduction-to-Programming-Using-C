@@ -1,0 +1,59 @@
+///////////////////////////////////////////////////////////////////////////
+                              Reflection
+                          Workshop - #4 (P2)
+Full Name  : Chetan Arora
+Student ID#: 100976240
+Email      : carora18@myseneca.ca
+Section    : ZRA
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+Que(1) After using different types of iteration constructs in this workshop, you learn that you can use any of the iteration constructs do/while, while or for to solve a programming task. Compare and explain the application of the "while" and "do/while" constructs in receiving and evaluating the user's input.
+
+Ans. In this grocery shopping code, In this code i used while loop first
+with the syntex while(flag == 0 && anotherShopping !=0) which is controlling the repetition of the whole shopping.Inside this loop  expression is used flag==0 && anotherShopping != 0.which means when when flag is equal to zero and another shopping is not zero then loop is working fine.
+In second one, i used do/while loop with syntex do while(askForApples < 0 in this loop first code is executed then condition is checked
+Comperison :-
+In while loop first condition is checked, when expression is true then loop is executed.
+In do while loop , first loop is executed then expression is check true or false.
+
+Que(2) In this workshop, you used “if” optional path constructs and “if/else if” alternative path logic. Give an example from the workshop were using the “if/else if” alternative path construct is more efficient than a series of “if” optional paths.
+
+Ans. "if/else if" non-compulsory direction construct is used in the section where the person is asked to choose theobjects to buy. when the person is requested to pick an apple, the code makes use of "if/else if" to checking the value of the pickedItem variable. 
+Code:
+while (askForApple > 0)
+{
+while (askForApple != 0)
+{
+printf("Pick some APPLES... how many did you pick? : ");
+scanf("%d", &selectedItem);
+
+if (selectedItem > askForApple)
+{
+    printf("You picked too many... only %d more APPLE(S) are needed.\n", askForApple);
+}
+else if (selectedItem <= 0)
+{
+    printf("ERROR: You must pick at least 1!\n");
+}
+else if (selectedItem < askForApple)
+{
+    askForApple = askForApple - selectedItem;
+    printf("Looks like we still need some APPLES...\n");
+}
+else if (selectedItem == askForApple)
+{
+    askForApple = askForApple - selectedItem;
+    printf("Great, that's the apples done!\n\n");
+}
+}
+ 
+In this code, using "if/else if" is better than a series of separate "if" statements because it decreases the number of comparisons needed. With a chain of "if" statements, each one must be checked even if a previous one is true. "if/else if" can exit comparisons once a condition is met, making execution faster and improving performance.
+
+Que(3) With the completion of this workshop, you must have begun to appreciate why code formatting is important.Explain how you made your code – especially the iteration and selection logic parts – easy to read and maintain.
+
+Ans. In this code , I have used various loops such as while and do-while loop and use if and elseif statements.  I have used variable names like "askForApples" and "pickedItem". This can assist make the code easier to read and reduce the amount of time it takes to understand what each variable represents.Another one approach I used in this code is to break in blocks for better understanding. 

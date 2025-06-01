@@ -1,0 +1,80 @@
+###########################################################################
+
+                              Reflection
+                             Workshop - #2
+Full Name  : Chetan Arora
+Student ID#: 100976240
+Email      : carora18@myseneca.ca
+Section    : ZRA
+
+Authenticity Declaration:
+
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+###########################################################################
+
+1)Execute the following code on your machine and record the result.
+int a = 3;
+a++;
+printf("a = %d”,a);
+
+Then execute this code and record the result
+int a = 3;
+printf("a = %d”,a++);
+
+Compare the recorded results; what is the value of variable ‘a’ after the print function in each code snippet?
+Explain the difference between the two of them and why they generated two different outputs.
+
+Ans:- Output of First Code:- a=4, Output of Second Code:- a=3 
+
+The output of first code is a=4. This means that the value of variable 'a' after the print function was 4. This is because the statement a++ increments the value of 'a' by 1 before printing it.
+		The second one's output is a=3. This means that the value of variable 'a' after the print function was still 3. This is because the statement a++ increments the value of 'a' by 1 after printing it, which returns the original value of variable 'a' and then increments it.
+
+
+2)Given the following C statements:
+float price1 = 24.96f, price3 = 24.97;
+double price2 = 24.96, price4 = 24.97;
+printf("1. 24.96 = %f (as cents:%d)\n", price1, (int)(price1 * 100));
+printf("2. 24.96 = %lf (as cents:%d)\n", price2, (int)(price2 * 100));
+printf("3. 24.97 = %f (as cents:%d)\n", price3, (int)(price3 * 100));
+printf("4. 24.97 = %lf (as cents:%d)\n", price4, (int)(price4 * 100));
+
+Execute the above sample code on your machine. Briefly explain why price1 and the corresponding converted cent value do not properly represent the intended value. Why do you think all the other samples work as expected?
+
+Ans:-
+Output is:-
+1. 24.96 = 24.959999 (as cents:2496)
+2. 24.96 = 24.960000 (as cents:2496)
+3. 24.97 = 24.969999 (as cents:2497)
+4. 24.97 = 24.970000 (as cents:2497)
+
+In price1 and price3, there is use of 32 bits of  data in float data type. Reason behind wrong output is the computers cannot store some numbers exactly in memory due to less space. The binary representation limited the number of bits.
+
+In price 2 and price4,there is use of 64 bits of data in double data type. Reason behind right output is the computers store numbers more precisely and avoid rounding errors in memory due to large space.
+
+
+3)Execute the below code on your machine:
+int result, money = 2031;
+printf("1. $%.2lf\n", money / 100); 
+printf("2. $%d\n", money / 100);
+printf("3. $%.2lf\n", (double)money / 100); 
+printf("4. $%d\n", (double)money / 100); 
+Explain why these four examples work as intended. Apply terms like cast, promotion, coercion, implicit, and explicit in your answer.
+
+Ans:-1. $0.00
+2. $20
+3. $20.31
+4. $687194767
+
+In first print statement, the format of data type used in printf is %.2f, which means to print a double, but the variable 'money' is integer data type.Resultantly, output is $o.oo.This is called a explicit.
+
+In second print statement,  the format of data type used in printf is %d, which means print a integer, but the result of the mathematical expression money=2031/100 is 20.31. And the integer is return the without decimal number i.e 20.So, the output is $20. This is called an implicit.
+
+In Third print statement,the format of data type used in printf is %.2f, which means to print a double, and expression (double)money/100 is also coverted to double data type. The value also return the fractional value, so the output is $20.31 which is accurate result.This is called promotion.
+
+In Fourth print statement,the format of data type used in printf is %d, which means print a integer, but the expression (double)money/100 is  coverted to double data type. This called coercion.This is called promotion.
+
+
+
+

@@ -1,0 +1,42 @@
+///////////////////////////////////////////////////////////////////////////
+                              Reflection
+                          Workshop - #6 (P2)
+Full Name  : Chetan Arora
+Student ID#: 100976240
+Email      : carora18@myseneca.ca
+Section    : ZRA
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been shared with any other student or 3rd party content provider. This submitted piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+Question 1:- In part 2 of this workshop, you used three arrays of the same size to store different data types. What do we call arrays that are arranged like that? Explain why we use arrays like this (refer to your code from Part-2).
+Answer:-  In my code, I used the costOfItem, priority, and financed arrays. These arrays are used to store the data separately and required to used together. we call arrays that are arranged like that is Parallel arrays.In this code, I am access the cost, priority, and financing option of a specific wish list item, I can simply access the elements at the same index in each array.And I also used array to create flags in code.
+int main(void)
+{
+	int flag[] = { 0,0,0,0,0 };
+	int priority[10];
+	char financed[100];
+	double costOfItem[LIMIT];
+
+Question 2:- What iteration construct is the most convenient to use with Arrays? Select one example from your code where you use that iteration construct and rewrite the same logic applying one of the other two iteration constructs. Summarize your findings.
+Answer:- I used several iterations in this code such as
+for (i = 0; i < listItems; i++)
+{
+    printf("%3d  %5d    %5c    %11.2lf\n", i + 1, priority[i], financed[i], costOfItem[i]);
+    totalValue += costOfItem[i];
+}
+we can use while loop given below instead of for loop, but for loop is easier to read. It succinctly expresses the initialization, condition, and incrementation in one line, making it easy to understand at a glance.
+i = 0;
+while (i < listItems)
+{
+    printf("%3d  %5d    %5c    %11.2lf\n", i + 1, priority[i], financed[i], costOfItem[i]);
+    totalValue += costOfItem[i];
+    i++;
+}
+ 
+
+Question 3:- Describe what you did to both test and debug your program. How did you go about finding where the problems were located (explain how you did this for both syntactic and semantic problems)?
+Answer:-  Firstly, when ever I am writing the code in Visual Studio, it show the ~ tilda sign to represent the missing thing in code. 
+After the correction, Then Compiler Errors: Initially, I would compile the code to check for any syntax errors. If there are any error, the compiler will point them out, indicating the line number and the nature of the error.  
+Other is Logic Errors: After ensuring the code compiles without errors, I would focus on testing for logical errors. Because that can cause the program to produce incorrect results. 

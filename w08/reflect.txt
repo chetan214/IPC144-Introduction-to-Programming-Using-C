@@ -1,0 +1,61 @@
+///////////////////////////////////////////////////////////////////////////
+                              Reflection
+                          Workshop - #8 (P2)
+Full Name  : Chetan Arora
+Student ID#: 100976240
+Email      : carora18@myseneca.ca
+Section    : ZRA
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been shared with any other student or 3rd party content provider. This submitted piece of work is entirely of my own creation.
+///////////////////////////////////////////////////////////////////////////
+
+Question 1:- In this workshop, you have the “convertLbsKg” function. This function returns one value in two different ways. Explain how each return method works. If we wanted to revise this function so it doesn’t provide two ways to return a value, and instead, break this out into two separate functions, what would each function prototype look like?
+
+Answer:- The convertLbsKg function currently returns one value in two different ways:
+
+1) Direct Return: It returns the calculated value of kilograms directly.
+
+2) Indirect Return via Pointer: It also modifies the value of kilograms through a pointer provided as an argument to the function.
+
+how above methods work:
+
+Direct Return: The function calculates the weight in kilograms by dividing the weight in pounds by the conversion factor lbsToKg.Then returns this calculated value directly.
+
+
+Indirect Return via Pointer:The function calculates the weight in kilograms similarly as in the above direct method.It also modifies the value of kilograms by storing it at the memory location pointed to by the pointer provided as an argument.This allows to receive the calculated value directly or to have it stored in a variable whose address is passed to the function.
+To revise this function so it doesn’t provide two ways to return a value, and instead, break this out into two separate functions, we can create separate functions for each return method:
+
+Direct Return Function:
+
+double convertLbsToKgDirect(double pnd);
+This function takes the weight in pounds as input and returns the equivalent weight in kilograms directly without modifying any variables passed by pointers.
+
+Indirect Return Function:
+
+void convertLbsToKgIndirect(double pnd, double* kg);
+This function takes the weight in pounds as input and modifies the value of kilograms by storing it at the address pointed to by the pointer 'kg'.
+
+Question 2:- Name a few functions in this workshop where they are highly cohesive and loosely coupled and explain why.
+
+Answer:- In this workshop, there are highly cohesive and loosely coupled. Let's identify a few functions in the code that exhibit these qualities:
+
+getCatFoodInfo() Function:
+
+High Cohesion: This function is highly cohesive because it is responsible for collecting information about a cat food product. It prompts the user for input related to the SKU, price, weight, and calories per serving.
+Loose Coupling: It achieves loose coupling by being self-contained and independent of other parts of the program. It does not directly interact with external functions or modify global variables, making it easy to understand, test, and modify in isolation.
+
+calculateReportData() Function:
+
+High Cohesion: This function is highly cohesive as it calculates various metrics related to a cat food product for generating a report. It computes the total servings, cost per serving, cost per calorie, and other relevant data.
+Loose Coupling: It achieves loose coupling by relying on input parameters (i.e., a CatFoodInfo object) rather than directly accessing global variables or depending on external state. This makes the function reusable and easier to maintain.
+
+Question 3:- You used a header (.h) file for the first time in this workshop. The header file also had a source code file (.c) to complement it where the function definitions were placed. What are your thoughts on using this design and approach to manage the development of the application? Provide specific references to the workshop to help you communicate your remarks.
+
+Answer- Using a header file (.h) along with a corresponding source code file (.c) is a common and recommended practice in IT industries, and it's a good approach to manage the development of the application. Below are the some benefits with specific references to the workshop:
+
+1.Clear Interface:The use of a header file provides a clear interface to the functions and data structures. Other parts of the program can include the header file to access the functionalities without needing to know the implementation details.For example, in the workshop, other functions like `start()` and `calculateReportData()` include the `w8p2.h` header file to use the functions declared within it, without needing to see the implementation details in `w8p2.c`.
+
+2.Avoiding Code Duplication:With separate header and source files, the workshop avoids code duplication. Function declarations are written once in the header file and can be included wherever needed, reducing the risk of errors due to inconsistent declarations.
+ 
+3.Compilation Efficiency: Separating declarations and implementations into different files can improve compilation efficiency. When a source file is modified, only that file needs to be recompiled, along with any files that include its header, rather than recompiling the entire project.
